@@ -1,0 +1,5 @@
+importClass(javafx.scene.image.Image)
+importClass(javafx.scene.image.ImageView)
+
+export(readImage)
+export(as.imageView)
