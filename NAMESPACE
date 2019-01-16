@@ -3,3 +3,5 @@ importClass(javafx.scene.image.ImageView)
 
 export(readImage)
 export(as.imageView)
+export(greaterThan)
+export(lessThan)

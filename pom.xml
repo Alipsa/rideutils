@@ -24,7 +24,7 @@
   </licenses>
 
   <properties>
-    <renjin.version>0.9.2718</renjin.version>
+    <renjin.version>0.9.2719</renjin.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -112,6 +112,23 @@
             <phase>test</phase>
           </execution-->
         </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+          </dependency>
+          <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
+          </dependency>
+          <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.25</version>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <groupId>se.alipsa</groupId>
