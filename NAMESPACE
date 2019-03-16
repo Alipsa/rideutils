@@ -5,3 +5,5 @@ export(readImage)
 export(as.imageView)
 export(greaterThan)
 export(lessThan)
+
+export(View)
