@@ -7,3 +7,11 @@ View <- function(x, title = NA) {
         inout$View(x, title)
     }
 }
+
+display <- function(x, title = NA) {
+    if (is.na(title)) {
+        inout$display(x)
+    } else {
+        inout$display(x, title)
+    }
+}

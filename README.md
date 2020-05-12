@@ -1,6 +1,14 @@
 # rideutils
 Java FX GUI utilities for use in Renjin applications e.g. Ride
 
+### Ver 1.1
+Add display so you dont have to write inout$display()
+
+### Ver 1.0
+Hamcrest extension greaterThan and lessThan
+export View so you dont have to write inout$View()
+lower level image functions bridging to java: readImage, as.imageView
+ 
 ## 3:rd pary software used
 
 
