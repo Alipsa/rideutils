@@ -2,9 +2,9 @@
 
 View <- function(x, title = NA) {
     if (is.na(title)) {
-        inout$View(x)
+        inout$View(format(x))
     } else {
-        inout$View(x, title)
+        inout$View(format(x), title)
     }
 }
 
