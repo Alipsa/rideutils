@@ -28,6 +28,9 @@ public class ReadImage {
      * Find a resource using available class loaders.
      * It will also load resources/files from the
      * absolute path of the file system (not only the classpath's).
+     *
+     * @param resource the path to the resource
+     * @return the URL representation of the resource
      */
     public static URL getResourceUrl(String resource) {
         final List<ClassLoader> classLoaders = new ArrayList<ClassLoader>();

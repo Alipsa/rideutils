@@ -8,3 +8,7 @@ export(lessThan)
 
 export(View)
 export(display)
+
+export(prompt)
+export(chooseFile)
+export(chooseDir)

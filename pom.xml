@@ -7,7 +7,7 @@
 
   <groupId>se.alipsa</groupId>
   <artifactId>rideutils</artifactId>
-  <version>1.2</version>
+  <version>1.3</version>
   <packaging>jar</packaging>
 
 
@@ -37,7 +37,7 @@
 
   <properties>
     <renjin.version>RELEASE</renjin.version>
-    <renjin.version.for.plugin>3.5-beta65</renjin.version.for.plugin>
+    <renjin.version.for.plugin>3.5-beta76</renjin.version.for.plugin>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -107,6 +107,33 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.0.0-M3</version>
+        <executions>
+          <execution>
+            <id>enforce-releases-maven-java</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>[3.0.5,)</version>
+                  <level>ERROR</level>
+                  <message>Please use maven version 3.0.5 or higher</message>
+                </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>[1.8.0,)</version>
+                  <level>WARN</level>
+                  <message>Please use Java 8 or higher with built in javafx</message>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.renjin</groupId>
         <artifactId>renjin-maven-plugin</artifactId>
         <version>${renjin.version.for.plugin}</version>
@@ -139,8 +166,8 @@
       </plugin>
       <plugin>
         <groupId>se.alipsa</groupId>
-        <artifactId>renjin-hamcrest-maven-plugin</artifactId>
-        <version>1.2</version>
+        <artifactId>renjin-test-maven-plugin</artifactId>
+        <version>1.3.1</version>
         <configuration>
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
@@ -174,7 +201,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>3.2.1</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -187,7 +214,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -200,7 +227,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.7.1</version>
+        <version>3.9.1</version>
         <configuration>
           <generateReports>false</generateReports>
         </configuration>

@@ -1,6 +1,15 @@
 # rideutils
 Java FX GUI utilities for use in Renjin applications e.g. Ride
 
+### Ver 1.3
+Add gui dialog interactions: 
+- prompt which prompts for a text input
+- chooseFile which opens a file chooser
+- chooseDir which opens a directory chooser
+
+### Ver 1.2
+Format before View so that dates looks understandable
+
 ### Ver 1.1
 Add display so you dont have to write inout$display()
 
