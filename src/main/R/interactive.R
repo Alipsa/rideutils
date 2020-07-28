@@ -7,6 +7,18 @@ prompt <- function(title = "", headerText = "", message = "") {
   dialogs$prompt(title, headerText, message)
 }
 
+promptDate <- function(title = "", headerText = "", message = "") {
+  import(se.alipsa.rideutils.Dialogs)
+  dialogs <- Dialogs$new(inout$getStage())
+  dialogs$promptDate(title, headerText, message)
+}
+
+promptYearMonth <- function(title = "", headerText = "", message = "") {
+  import(se.alipsa.rideutils.Dialogs)
+  dialogs <- Dialogs$new(inout$getStage())
+  dialogs$promptYearMonth(title, headerText, message)
+}
+
 # A file chooser dialog
 chooseFile <- function (title, initialDir = ".", description, ...) {
   import(se.alipsa.rideutils.Dialogs)

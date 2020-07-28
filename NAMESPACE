@@ -10,5 +10,7 @@ export(View)
 export(display)
 
 export(prompt)
+export(promptDate)
+export(promptYearMonth)
 export(chooseFile)
 export(chooseDir)
