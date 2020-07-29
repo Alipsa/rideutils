@@ -1,4 +1,4 @@
 library("se.alipsa:rideutils")
 
-fileType <- prompt("What kind of filetype?", message = "Enter the extension here")
-print(paste("Filetype is", fileType))
+fileType <- promptYearMonth("Select a year month", message = "Forecast date")
+print(paste("year month is", fileType))
