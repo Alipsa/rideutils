@@ -7,6 +7,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -35,6 +36,7 @@ public class Dialogs {
             dialog.setTitle(title);
             dialog.setHeaderText(headerText);
             dialog.setContentText(message);
+            dialog.setResizable(true);
             return dialog.showAndWait().orElse(null);
         });
         Platform.runLater(task);
@@ -46,10 +48,11 @@ public class Dialogs {
         FutureTask<LocalDate> task = new FutureTask<>(() -> {
             Dialog<LocalDate> dialog = new Dialog<>();
             dialog.setTitle(title);
-            BorderPane content = new BorderPane();
-            content.setTop(new Label(message));
+            FlowPane content = new FlowPane();
+            content.setHgap(5);
+            content.getChildren().add(new Label(message));
             DatePicker picker = new DatePicker();
-            content.setCenter(picker);
+            content.getChildren().add(picker);
             dialog.getDialogPane().setContent(content);
             dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
             dialog.setResultConverter(buttonType -> {
@@ -58,6 +61,8 @@ public class Dialogs {
                 }
                 return null;
             });
+            dialog.setResizable(true);
+            dialog.getDialogPane().getScene().getWindow().sizeToScene();
             return dialog.showAndWait().orElse(null);
         });
         Platform.runLater(task);
@@ -70,10 +75,11 @@ public class Dialogs {
         FutureTask<YearMonth> task = new FutureTask<>(() -> {
             Dialog<YearMonth> dialog = new Dialog<>();
             dialog.setTitle(title);
-            BorderPane content = new BorderPane();
-            content.setTop(new Label(message));
+            FlowPane content = new FlowPane();
+            content.setHgap(5);
+            content.getChildren().add(new Label(message));
             YearMonthPicker picker = new YearMonthPicker();
-            content.setCenter(picker);
+            content.getChildren().add(picker);
             dialog.getDialogPane().setContent(content);
             dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
             dialog.setResultConverter(buttonType -> {
@@ -82,6 +88,8 @@ public class Dialogs {
                 }
                 return null;
             });
+            dialog.setResizable(true);
+            dialog.getDialogPane().getScene().getWindow().sizeToScene();
             return dialog.showAndWait().orElse(null);
         });
         Platform.runLater(task);
