@@ -6,12 +6,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Callback;
+import javafx.util.StringConverter;
 import se.alipsa.ymp.YearMonthPicker;
 
 import java.io.File;
@@ -54,6 +53,17 @@ public class Dialogs {
             content.setHgap(5);
             content.getChildren().add(new Label(message));
             DatePicker picker = new DatePicker();
+            picker.setConverter(new StringConverter<LocalDate>() {
+                @Override
+                public String toString(LocalDate localDate) {
+                    return localDate == null ? null : formatter.format(localDate);
+                }
+
+                @Override
+                public LocalDate fromString(String s) {
+                    return s == null ? null : LocalDate.parse(s, formatter);
+                }
+            });
             content.getChildren().add(picker);
             dialog.getDialogPane().setContent(content);
             dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);

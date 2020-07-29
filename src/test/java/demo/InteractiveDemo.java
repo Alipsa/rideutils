@@ -15,10 +15,7 @@ import org.apache.log4j.Logger;
 import org.renjin.script.RenjinScriptEngine;
 import org.renjin.script.RenjinScriptEngineFactory;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -96,6 +93,8 @@ public class InteractiveDemo extends Application {
         BorderPane bottom = new BorderPane();
         pane.setBottom(bottom);
         outputTa = new TextArea();
+        outputTa.setTooltip(new Tooltip("output area"));
+        outputTa.setEditable(false);
         bottom.setCenter(outputTa);
         Scene scene = new Scene(pane, 800, 600);
         stage.setScene(scene);
@@ -104,11 +103,10 @@ public class InteractiveDemo extends Application {
 
     void runScriptInThread(String rCode) {
         // just for small demo code so no need to stream output to the console
-        // we just write it once the execution is done using a StringWriter to keep it simple
         Task<Void> task = new Task<Void>() {
             @Override
             public Void call() throws Exception {
-                try (StringWriter out = new StringWriter();
+                try (AppenderPrintWriter out = new AppenderPrintWriter();
                      PrintWriter outputWriter = new PrintWriter(out);
                 ){
                     RenjinScriptEngine engine = new RenjinScriptEngineFactory().getScriptEngine();
@@ -116,7 +114,6 @@ public class InteractiveDemo extends Application {
                     engine.getSession().setStdErr(outputWriter);
                     engine.put("inout", InteractiveDemo.this);
                     engine.eval(rCode);
-                    Platform.runLater(() -> printResult(out));
                 } catch (RuntimeException e) {
                     // RuntimeExceptions (such as EvalExceptions is not caught so need to wrap all in an exception
                     // this way we can get to the original one by extracting the cause from the thrown exception
@@ -153,5 +150,21 @@ public class InteractiveDemo extends Application {
     // this as the inout object
     public Stage getStage() {
         return stage;
+    }
+
+    class AppenderPrintWriter extends Writer {
+
+        @Override
+        public void write(char[] cbuf, int off, int len) {
+            Platform.runLater(() -> outputTa.appendText(new String(cbuf, off, len)));
+        }
+
+        @Override
+        public void flush() {
+        }
+
+        @Override
+        public void close() {
+        }
     }
 }
