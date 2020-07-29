@@ -18,6 +18,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
@@ -43,8 +44,9 @@ public class Dialogs {
         return task.get();
     }
 
-    public String promptDate(String title, String message) throws InterruptedException, ExecutionException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public String promptDate(String title, String message, String outputFormat) throws InterruptedException, ExecutionException {
+        if (outputFormat == null) outputFormat = "yyyy-MM-dd";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(outputFormat);
         FutureTask<LocalDate> task = new FutureTask<>(() -> {
             Dialog<LocalDate> dialog = new Dialog<>();
             dialog.setTitle(title);
@@ -70,15 +72,23 @@ public class Dialogs {
         return result == null ? null : formatter.format(result);
     }
 
-    public String promptYearMonth(String title, String message) throws InterruptedException, ExecutionException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
+    public String promptYearMonth(String title, String message, String from, String to, String initial,
+                                  String languageTag, String monthFormat, String outputFormat)
+            throws InterruptedException, ExecutionException {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern(outputFormat);
+        YearMonth fromYM = YearMonth.parse(from, inputFormatter);
+        YearMonth toYM = YearMonth.parse(to, inputFormatter);
+        YearMonth initialYM = YearMonth.parse(initial, inputFormatter);
+        Locale locale = languageTag == null ? Locale.getDefault() : Locale.forLanguageTag(languageTag);
+
         FutureTask<YearMonth> task = new FutureTask<>(() -> {
             Dialog<YearMonth> dialog = new Dialog<>();
             dialog.setTitle(title);
             FlowPane content = new FlowPane();
             content.setHgap(5);
             content.getChildren().add(new Label(message));
-            YearMonthPicker picker = new YearMonthPicker();
+            YearMonthPicker picker = new YearMonthPicker(fromYM, toYM, initialYM, locale, monthFormat, outputFormat);
             content.getChildren().add(picker);
             dialog.getDialogPane().setContent(content);
             dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
@@ -94,7 +104,8 @@ public class Dialogs {
         });
         Platform.runLater(task);
         YearMonth result = task.get();
-        return result == null ? null : formatter.format(result);
+
+        return result == null ? null : outputFormatter.format(result);
     }
 
     public File chooseFile(String title, String initialDirectory, String description, String... extensions) throws InterruptedException, ExecutionException {

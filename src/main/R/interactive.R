@@ -7,16 +7,34 @@ prompt <- function(title = "", headerText = "", message = "") {
   dialogs$prompt(title, headerText, message)
 }
 
-promptDate <- function(title = "", message = "") {
+promptDate <- function(title = "", message = "", outputFormat = "yyyy-MM-dd") {
   import(se.alipsa.rideutils.Dialogs)
   dialogs <- Dialogs$new(inout$getStage())
-  dialogs$promptDate(title, message)
+  dialogs$promptDate(title, message, outputFormat)
 }
 
-promptYearMonth <- function(title = "",  message = "") {
+# languageTag is one of language tags in the table: https://www.oracle.com/java/technologies/javase/jdk8-jre8-suported-locales.html
+promptYearMonth <- function(title = "",  message = "", from=NA, to=NA, initial=NA, languageTag=NA, monthFormat = "MMMM", outputFormat = "yyyy-MM") {
   import(se.alipsa.rideutils.Dialogs)
   dialogs <- Dialogs$new(inout$getStage())
-  dialogs$promptYearMonth(title, message)
+
+  if (is.na(initial)) {
+    initialDate <- as.POSIXlt(Sys.Date())
+    initial <- format(initialDate, "%Y-%m")
+  } else {
+    initialDate <- as.POSIXlt(paste0(initial, "-01"))
+  }
+  if (is.na(from)) {
+    fromDate <- initialDate
+    fromDate$year <- fromDate$year - 3
+    from <-  format(fromDate, "%Y-%m")
+  }
+  if (is.na(to)) {
+    toDate <- initialDate
+    toDate$year <- toDate$year + 3
+    to <-  format(fromDate, "%Y-%m")
+  }
+  dialogs$promptYearMonth(title, message, from, to, initial, languageTag, monthFormat, outputFormat)
 }
 
 # A file chooser dialog
