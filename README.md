@@ -169,6 +169,7 @@ print(paste("Date is", date2))
 - Override `readline` from base R to work in a GUI context
 - Greatly expand documentation
 - Moved demo to separate module
+- Create demo jar with dependencies and fixed file traversal so it also works inside a jar.
 
 ### Ver 1.4
 - Add additional parameters to promptDate and promptYearMonth.
