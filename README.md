@@ -1,9 +1,10 @@
 # rideutils
-Java FX GUI utilities for use in Renjin applications e.g. Ride
+GUI utilities for use in JavaFx based applications running R code via Renjin 
+e.g. [Ride](https://github.com/perNyfelt/ride)
 
 ## API / Usage overview
 
-There is a demo gui that displays most of the functions below. To run it clone the repo and
+There is a demo gui that displays most of the functions below. To run it, clone the repo and
 execute the demo script `runDemo.sh` or if that is not working for you execute the following commands:
 ```shell script
 mvn -DskipTests install
@@ -12,10 +13,12 @@ mvn exec:java
 ```
 Here is a screenshot:
 ![Screenshot](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/demogui.png "Screenshot")
+
 It is a simple R gui where some sample files are loaded in the left pane. 
 You can select one and it will load the code into the right pane which holds
 the R code to execute. The resulting output will be in the bottom pane.
 
+## Function descriptions
 ### Hamcrest extensions
 __greaterThan <- function(expected)__
 Allows you do do test expressions such as `assertThat(someVar, greaterThan(22))`
@@ -161,38 +164,37 @@ print(paste("Date is", date2))
 ## Version history
 
 ### Ver 1.5-SNAPSHOT
-override readline to allow the base R readline function to work in a GUI context
-expand documentation
+- Override `readline` from base R to work in a GUI context
+- Greatly expand documentation
+- Moved demo to separate module
 
 ### Ver 1.4
-add additional parameters to promptDate and promptYearMonth.
-changed demo to stream output to not give the wrong impression on input availability.
+- Add additional parameters to promptDate and promptYearMonth.
+- Changed demo to stream output to not give the wrong impression on input availability.
 
 ### Ver 1.3
-Add gui dialog interactions: 
-- prompt which prompts for a text input
-- chooseFile which opens a file chooser
-- chooseDir which opens a directory chooser
+- Add gui dialog interactions: 
+    - prompt which prompts for a text input
+    - chooseFile which opens a file chooser
+    - chooseDir which opens a directory chooser
 
 ### Ver 1.2
-Format before View so that dates looks understandable
+- Format before View so that dates looks understandable
 
 ### Ver 1.1
-Add display so you dont have to write inout$display()
+- Add display so you dont have to write inout$display()
 
 ### Ver 1.0
-Hamcrest extension greaterThan and lessThan
-export View so you dont have to write inout$View()
-lower level image functions bridging to java: readImage, as.imageView
+- Hamcrest extension greaterThan and lessThan
+- Export View so you dont have to write inout$View()
+- Lower level image functions bridging to java: readImage, as.imageView
  
 ## 3:rd party software used
-
 
 ### org.renjin:renjin-script-engine, hamcrest
 The framework this extension is for ;)
 
 Copyright © 2010-2018 BeDataDriven Groep B.V. and contributors under GNU General Public License v2.0
-
 
 ### de.codecentric.centerdevice:javafxsvg
 Used to allow handling of svg images. License: BSD 3-clause: https://github.com/codecentric/javafxsvg/blob/master/LICENSE.txt
@@ -202,7 +204,7 @@ Copyright (c) 2015, codecentric AG
 JavaFxSVG is a simple library adding SVG support to JavaFX and thus allowing to use SVG graphics just like any other image type.
 
 ### org.slf4j
-Used for logging internally.
+Used for logging internally. Apache licensed.
 
 ### se.alipsa:fx-yearmonth-picker
-Provides the control used for picking year months
+Provides the control used for picking year months. MIT licensed.

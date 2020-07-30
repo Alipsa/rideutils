@@ -122,6 +122,7 @@ public class InteractiveDemo extends Application {
                 return null;
             }
         };
+
         task.setOnSucceeded(e -> {
             log.info("R Script executed successfully!");
         });
