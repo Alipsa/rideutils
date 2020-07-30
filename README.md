@@ -4,7 +4,9 @@ e.g. [Ride](https://github.com/perNyfelt/ride)
 
 ## API / Usage overview
 
-There is a demo gui that displays most of the functions below. To run it, clone the repo and
+There is a demo gui that displays most of the functions below. To run it, either
+1. download and run the jar with dependencies e.g. `java -jar rideutils-demo-1.0-SNAPSHOT-jar-with-dependencies.jar`
+2. or: clone the repo and
 execute the demo script `runDemo.sh` or if that is not working for you execute the following commands:
 ```shell script
 mvn -DskipTests install

@@ -16,11 +16,21 @@ import org.renjin.script.RenjinScriptEngine;
 import org.renjin.script.RenjinScriptEngineFactory;
 
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class InteractiveDemo extends Application {
@@ -47,40 +57,45 @@ public class InteractiveDemo extends Application {
         left.setSpacing(5);
         pane.setLeft(left);
         left.getChildren().add(new Label("Demo files"));
-        ComboBox<File> demoFiles = new ComboBox<>();
-        demoFiles.setConverter(new StringConverter<File>() {
+        ComboBox<Path> demoFiles = new ComboBox<>();
+        demoFiles.setConverter(new StringConverter<Path>() {
             @Override
-            public String toString(File file) {
+            public String toString(Path file) {
                 if (file == null) return "";
-                return file.getName();
+                return file.getFileName().toString();
             }
 
             @Override
-            public File fromString(String s) {
-                return new File(s);
+            public Path fromString(String s) {
+                return Paths.get(s);
             }
         });
         left.getChildren().add(demoFiles);
         URL url = getClass().getResource("/demo");
-        File dir = null;
+        List<Path> files = null;
         try {
-            dir = Paths.get(url.toURI()).toFile();
+            files = getFiles(url);
         } catch (URISyntaxException e) {
             e.printStackTrace();
-            return;
+            System.exit(1);
         }
 
-        for (File file : dir.listFiles()) {
-            if (file.getName().endsWith(".R")) {
-                demoFiles.getItems().add(file);
+        for (Path path : files) {
+            if (path.toString().endsWith(".R")) {
+                demoFiles.getItems().add(path);
             }
         }
 
         demoFiles.setOnAction(a -> {
-            File file = demoFiles.getValue();
+            Path file = demoFiles.getValue();
             ta.setText("");
-            try (Stream<String> lines = Files.lines(file.toPath(), StandardCharsets.UTF_8)) {
-                lines.forEach(line -> ta.appendText(line + "\n"));
+            try (InputStream is = file.toUri().toURL().openStream();
+                 InputStreamReader isReader = new InputStreamReader(is);
+                 BufferedReader reader = new BufferedReader(isReader)) {
+                String line;
+                while((line = reader.readLine())!= null){
+                    ta.appendText(line + "\n");
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -167,5 +182,27 @@ public class InteractiveDemo extends Application {
         @Override
         public void close() {
         }
+    }
+
+    // We need to do some filesystem magic so this works independently whether is on a regula filesystem or inside a jar
+    List<Path> getFiles(URL dir) throws URISyntaxException {
+        URI uri = dir.toURI();
+        List<Path> files = new ArrayList<>();
+        // We need to define the contextual filesystem to be able to walk it
+        // but we do not need to use it explicitly, we just create a variable so try with resources can close it
+        boolean isInJar = uri.getScheme().equals("jar");
+        try (java.nio.file.FileSystem fileSystem =  isInJar ? FileSystems.newFileSystem(uri, Collections.emptyMap()) : null) {
+            Path myPath = Paths.get(uri);
+            Files.walkFileTree(myPath, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
+                    files.add(file);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return files;
     }
 }
