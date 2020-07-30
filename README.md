@@ -2,6 +2,15 @@
 GUI utilities for use in JavaFx based applications running R code via Renjin 
 e.g. [Ride](https://github.com/perNyfelt/ride)
 
+Add the following to your pom.xml to use it:
+```xml
+<dependency>
+    <groupId>se.alipsa</groupId>
+    <artifactId>rideutils</artifactId>
+    <version>1.5</version>
+</dependency>
+```
+
 ## API / Usage overview
 
 There is a demo gui that displays most of the functions below. To run it, either
