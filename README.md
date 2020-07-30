@@ -165,7 +165,7 @@ print(paste("Date is", date2))
 
 ## Version history
 
-### Ver 1.5-SNAPSHOT
+### Ver 1.5
 - Override `readline` from base R to work in a GUI context
 - Greatly expand documentation
 - Moved demo to separate module
