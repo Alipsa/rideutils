@@ -34,7 +34,7 @@ Provides a similar functionality as the R utils function View i.e. Invoke a spre
 
 _param:_ x - The matrix or data.frame to view, the content is formatted for viewing using format(). 
 
-I depends on an object called inout injected into the session that has a java method called View defined as
+It depends on an object called inout injected into the session that has a java method called View defined as
 `void View(SEXP sexp, String... title);`
 
 __display <- function(x, title = NA)__
@@ -110,28 +110,28 @@ print(paste("Dir chosen is", dir))
 ```
 
 __promptDate <- function(title = "", message = "", outputFormat = "yyyy-MM-dd")__
-Pops up a dat picker dialog allowing the user to pick a date.
+Pops up a date picker dialog allowing the user to pick a date.
 
-_Param:_ outputFormat - determines the format of the picked date in the dialog as well as in the 
+_@param:_ outputFormat - determines the format of the picked date in the dialog as well as in the 
 return value
 
-_Return value:_ a character string formatted according to the outputFormat param or
+_@return value:_ a character string formatted according to the outputFormat param or
 in the format "yyyy-MM-dd" is no outputFormat is given.
 
 __promptYearMonth <- function(title = "",  message = "", from=NA, to=NA, initial=NA, languageTag=NA, monthFormat = "MMMM", outputFormat = "yyyy-MM")__
 
-_Param:_ from - a character string with the start year month than can be chosen in the format "yyyy-MM"
+_@param:_ from - a character string with the start year month than can be chosen in the format "yyyy-MM"
 
-_Param:_ to - a character string with the en year month than can be chosen in the format "yyyy-MM"
+_@param:_ to - a character string with the en year month than can be chosen in the format "yyyy-MM"
 
-_Param:_ initial - the initial (default) value in the format "yyyy-MM"
+_@param:_ initial - the initial (default) value in the format "yyyy-MM"
 
-_Param:_ languageTag - The short code for the local e.g. en-US. For a full list of 
+_@param:_ languageTag - The short code for the local e.g. en-US. For a full list of 
 language tags see https://www.oracle.com/java/technologies/javase/jdk8-jre8-suported-locales.html
 
-_Param:_ monthFormat - determines the format of the month in the dialog 
+_@param:_ monthFormat - determines the format of the month in the dialog 
 
-_Param:_ outputFormat - determines the format of the picked date in the dialog as well as in the 
+_@param:_ outputFormat - determines the format of the picked date in the dialog as well as in the 
 return value
 
 _Example:_
