@@ -71,6 +71,13 @@ These are functions that allows the R program to interact with the user running 
 __readline <- function(prompt = "")__
 Overrides the base R readline function and pops up a graphical input dialog instead of reading from stdin.
 
+_Example:_
+```r
+library("se.alipsa:rideutils") 
+var <- readline("enter a number")
+print(paste("var is", var))
+```
+
 __prompt <- function(title = "", headerText = "", message = "")__
 Allows a user to enter string input which we can use in subsequent code.
 
@@ -135,6 +142,11 @@ print(paste("Date is", date2))
 ```
 
 ## Version history
+
+### Ver 1.5-SNAPSHOT
+override readline to allow the base R readline function to work in a GUI context
+expand documentation
+
 ### Ver 1.4
 add additional parameters to promptDate and promptYearMonth.
 changed demo to stream output to not give the wrong impression on input availability.
