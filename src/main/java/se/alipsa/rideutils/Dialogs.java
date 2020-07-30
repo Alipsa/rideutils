@@ -25,7 +25,9 @@ public class Dialogs {
 
     private final Stage stage;
 
-    /** Stage is the owner of the dialogs, typically the primary stage of the javafx application */
+    /**
+     * @param stage is the owner of the dialogs, typically the primary stage of the javafx application
+     */
     public Dialogs(Stage stage) {
         this.stage = stage;
     }

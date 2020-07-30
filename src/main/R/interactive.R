@@ -1,4 +1,12 @@
-# Some simple gui interaction dialogs
+# Title     : interactive
+# Objective : Some simple gui interaction dialogs
+# Created by: Per nyfelt
+# License: MIT
+
+# Since there is no meaningful stdin in a javafx applicaton we pop up a prompt instead
+readline <- function(prompt = "") {
+  prompt(message = prompt)
+}
 
 # A text input dialog
 prompt <- function(title = "", headerText = "", message = "") {
