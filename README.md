@@ -3,6 +3,19 @@ Java FX GUI utilities for use in Renjin applications e.g. Ride
 
 ## API / Usage overview
 
+There is a demo gui that displays most of the functions below. To run it clone the repo and
+execute the demo script `runDemo.sh` or if that is not working for you execute the following commands:
+```shell script
+mvn -DskipTests install
+cd demo
+mvn exec:java
+```
+Here is a screenshot:
+![Screenshot](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/demogui.png "Screenshot")
+It is a simple R gui where some sample files are loaded in the left pane. 
+You can select one and it will load the code into the right pane which holds
+the R code to execute. The resulting output will be in the bottom pane.
+
 ### Hamcrest extensions
 __greaterThan <- function(expected)__
 Allows you do do test expressions such as `assertThat(someVar, greaterThan(22))`
@@ -131,7 +144,7 @@ Default value NA will be converted to current year month.
 
 _@param:_ languageTag - The short code for the local e.g. en-US. For a full list of 
 language tags see https://www.oracle.com/java/technologies/javase/jdk8-jre8-suported-locales.html
-Deafult value NA vill be converted to the system default language setting.
+Default value NA vill be converted to the system default language setting.
 
 _@param:_ monthFormat - determines the format of the month in the dialog 
 
