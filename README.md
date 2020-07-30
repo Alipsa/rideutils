@@ -120,14 +120,18 @@ in the format "yyyy-MM-dd" is no outputFormat is given.
 
 __promptYearMonth <- function(title = "",  message = "", from=NA, to=NA, initial=NA, languageTag=NA, monthFormat = "MMMM", outputFormat = "yyyy-MM")__
 
-_@param:_ from - a character string with the start year month than can be chosen in the format "yyyy-MM"
+_@param:_ from - a character string with the start year month than can be chosen in the format "yyyy-MM".
+Default value NA will be converted to the initial date minus 3 years
 
 _@param:_ to - a character string with the en year month than can be chosen in the format "yyyy-MM"
+Default value NA will be converted to the initial date plus 3 years
 
 _@param:_ initial - the initial (default) value in the format "yyyy-MM"
+Default value NA will be converted to current year month.
 
 _@param:_ languageTag - The short code for the local e.g. en-US. For a full list of 
 language tags see https://www.oracle.com/java/technologies/javase/jdk8-jre8-suported-locales.html
+Deafult value NA vill be converted to the system default language setting.
 
 _@param:_ monthFormat - determines the format of the month in the dialog 
 
