@@ -125,6 +125,7 @@ description = "Excel files",
 "*.xls", "*.xlsx"
 )
 ```
+![Prompt](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/prompt.png "Prompt")
 
 __chooseDir <- function (title, initialDir = ".")__
 Allows a user to pick a directory.
@@ -135,6 +136,7 @@ library("se.alipsa:rideutils")
 dir <- chooseDir("Select output dir", ".")
 print(paste("Dir chosen is", dir))
 ```
+![chooseDir](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/chooseDir.png "chooseDir")
 
 __promptDate <- function(title = "", message = "", outputFormat = "yyyy-MM-dd")__
 Pops up a date picker dialog allowing the user to pick a date.
@@ -144,6 +146,13 @@ return value
 
 _@return value:_ a character string formatted according to the outputFormat param or
 in the format "yyyy-MM-dd" is no outputFormat is given.
+
+_Example:_
+```r
+library("se.alipsa:rideutils") 
+date2 <- promptDate("Date", message = "Another date", outputFormat = "dd MMM yyyy")
+print(paste("Date is", date2))
+```
 
 __promptYearMonth <- function(title = "",  message = "", from=NA, to=NA, initial=NA, languageTag=NA, monthFormat = "MMMM", outputFormat = "yyyy-MM")__
 
@@ -167,10 +176,12 @@ return value
 
 _Example:_
 ```r
-library("se.alipsa:rideutils") 
-date2 <- promptDate("Date", message = "Another date", outputFormat = "dd MMM yyyy")
-print(paste("Date is", date2))
+library("se.alipsa:rideutils")
+
+# simple version with all defaults
+start <- promptYearMonth(message = "Select start month")
 ```
+![promptYearMonth](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/promptYearMonth.png "promptYearMonth")
 
 ## Version history
 
