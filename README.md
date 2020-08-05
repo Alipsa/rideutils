@@ -104,6 +104,7 @@ library("se.alipsa:rideutils")
 var <- readline("enter a number")
 print(paste("var is", var))
 ```
+![Prompt](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/prompt.png "Prompt")
 
 __prompt <- function(title = "", headerText = "", message = "")__
 Allows a user to enter string input which we can use in subsequent code.
@@ -125,7 +126,7 @@ description = "Excel files",
 "*.xls", "*.xlsx"
 )
 ```
-![Prompt](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/prompt.png "Prompt")
+![chooseFile](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/chooseFile.png "chooseFile")
 
 __chooseDir <- function (title, initialDir = ".")__
 Allows a user to pick a directory.
