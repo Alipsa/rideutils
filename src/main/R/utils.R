@@ -2,16 +2,14 @@
 
 View <- function(x, title = NA) {
     if (is.na(title)) {
-        inout$View(format(x))
-    } else {
-        inout$View(format(x), title)
+        title <- deparse(substitute(x))
     }
+    inout$View(format(x), title)
 }
 
 display <- function(x, title = NA) {
     if (is.na(title)) {
-        inout$display(x)
-    } else {
-        inout$display(x, title)
+        title <- deparse(substitute(x))
     }
+    inout$display(x, title)
 }
