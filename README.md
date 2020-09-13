@@ -7,7 +7,7 @@ Add the following to your pom.xml to use it:
 <dependency>
     <groupId>se.alipsa</groupId>
     <artifactId>rideutils</artifactId>
-    <version>1.5</version>
+    <version>1.6</version>
 </dependency>
 ```
 
@@ -185,6 +185,9 @@ start <- promptYearMonth(message = "Select start month")
 ![promptYearMonth](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/promptYearMonth.png "promptYearMonth")
 
 ## Version history
+
+### Ver 1.6
+- Add variable name for View if no title was supplied.
 
 ### Ver 1.5
 - Override `readline` from base R to work in a GUI context
