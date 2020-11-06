@@ -13,3 +13,12 @@ display <- function(x, title = NA) {
     }
     inout$display(x, title)
 }
+
+plotPng <- function(func, title = "") {
+    plotFile <- tempfile(pattern = "plot", fileext = ".png")
+    png(plotFile)
+    eval(func)
+    dev.off()
+    inout$display(plotFile, title)
+    return(plotFile)
+}

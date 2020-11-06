@@ -92,6 +92,25 @@ dev.off()
 display(fileName, "svgplot")
 ```
 
+__plotPng <- function(func)__
+Convenience method to display plots
+```r
+plotPng(
+    barplot(
+      table(mtcars$vs, mtcars$gear),
+      main="Car Distribution by Gears and VS",
+      col=c("green","red")
+    )
+)
+
+# it return the tempfile created 
+irisFile <- plotPng(
+  hist(iris$Sepal.Width),
+  "sepal widths"
+)
+print(paste("Created plot of iris sepal width here", irisFile))
+```
+
 ### Interactive user input
 These are functions that allows the R program to interact with the user running it.
 
@@ -185,6 +204,9 @@ start <- promptYearMonth(message = "Select start month")
 ![promptYearMonth](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/promptYearMonth.png "promptYearMonth")
 
 ## Version history
+
+### Ver 1.7
+Add plotPng function
 
 ### Ver 1.6
 - Add variable name for View if no title was supplied.
