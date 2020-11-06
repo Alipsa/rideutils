@@ -8,6 +8,7 @@ export(lessThan)
 
 export(View)
 export(display)
+export(plotPng)
 
 export(readline)
 export(prompt)

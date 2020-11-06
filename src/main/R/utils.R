@@ -17,6 +17,7 @@ display <- function(x, title = NA) {
 plotPng <- function(func, title = "") {
     plotFile <- tempfile(pattern = "plot", fileext = ".png")
     png(plotFile)
+    # eval(substitute(FUN))
     eval(func)
     dev.off()
     inout$display(plotFile, title)
