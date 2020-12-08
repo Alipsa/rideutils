@@ -9,12 +9,17 @@ readline <- function(prompt = "") {
 }
 
 # A text input dialog
-prompt <- function(title = "", headerText = "", message = "") {
+prompt <- function(title = "", headerText = "", message = "", defaultValue = "") {
   import(se.alipsa.rideutils.Dialogs)
   dialogs <- Dialogs$new(inout$getStage())
-  dialogs$prompt(title, headerText, message)
+  if (is.na(defaultValue) || is.null(defaultValue)) {
+    defaultValue <- ""
+  }
+  dialogs$prompt(title, headerText, message, defaultValue)
 }
 
+# todo maybe add a default to prompt date as well?
+#promptDate <- function(title = "", message = "", outputFormat = "yyyy-MM-dd", defaultValue = as.character(Sys.Date())) {
 promptDate <- function(title = "", message = "", outputFormat = "yyyy-MM-dd") {
   import(se.alipsa.rideutils.Dialogs)
   dialogs <- Dialogs$new(inout$getStage())

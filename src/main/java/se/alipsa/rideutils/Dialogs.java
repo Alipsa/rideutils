@@ -32,20 +32,21 @@ public class Dialogs {
         this.stage = stage;
     }
 
-    public String prompt(String title, String headerText, String message) throws InterruptedException, ExecutionException {
+    public String prompt(String title, String headerText, String message, String defaultValue) throws InterruptedException, ExecutionException {
         FutureTask<String> task = new FutureTask<>(() -> {
-            TextInputDialog dialog = new TextInputDialog();
+            TextInputDialog dialog = new TextInputDialog(defaultValue);
             dialog.setTitle(title);
             dialog.setHeaderText(headerText);
             dialog.setContentText(message);
             dialog.setResizable(true);
+
             return dialog.showAndWait().orElse(null);
         });
         Platform.runLater(task);
         return task.get();
     }
 
-    public String promptDate(String title, String message, String outputFormat) throws InterruptedException, ExecutionException {
+    public String promptDate(String title, String message, String outputFormat, String defaultValue) throws InterruptedException, ExecutionException {
         if (outputFormat == null) outputFormat = "yyyy-MM-dd";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(outputFormat);
         FutureTask<LocalDate> task = new FutureTask<>(() -> {
