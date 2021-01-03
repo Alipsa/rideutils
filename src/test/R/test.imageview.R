@@ -22,7 +22,7 @@ test.readImage <- function() {
 }
 
 test.plot <- function() {
-  irisFile <- plotPng(
+  irisFile <- viewPlot(
     hist(iris$Sepal.Width),
     "sepal widths"
   )

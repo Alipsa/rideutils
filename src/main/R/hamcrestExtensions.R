@@ -23,3 +23,23 @@ lessThan <- function(expected) {
         all(actual < expected)
     }
 }
+
+#' check wether the actual begins with the expected character vector (string)
+str.beginsWith <- function(expected) {
+    if(is.na(expected)) {
+        stop("expected is NA, str.beginsWith NA makes no sense")
+    }
+    function(actual) {
+        startsWith(as.character(actual), as.character(expected))
+    }
+}
+
+#' check wether the actual ends with the expected character vector (string)
+str.endsWith <- function(expected) {
+    if(is.na(expected)) {
+        stop("expected is NA, str.endsWith NA makes no sense")
+    }
+    function(actual) {
+        endsWith(as.character(actual), as.character(expected))
+    }
+}

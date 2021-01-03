@@ -8,7 +8,10 @@ export(lessThan)
 
 export(View)
 export(display)
-export(plotPng)
+export(viewPlot)
+export(browseURL)
+export(viewHtml)
+export(viewer)
 
 export(readline)
 export(prompt)

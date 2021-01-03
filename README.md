@@ -92,10 +92,10 @@ dev.off()
 display(fileName, "svgplot")
 ```
 
-__plotPng <- function(func)__
+__viewPlot <- function(func)__
 Convenience method to display plots
 ```r
-plotPng(
+viewPlot(
     barplot(
       table(mtcars$vs, mtcars$gear),
       main="Car Distribution by Gears and VS",
@@ -103,8 +103,8 @@ plotPng(
     )
 )
 
-# it return the tempfile created 
-irisFile <- plotPng(
+# it returns the tempfile created 
+irisFile <- viewPlot(
   hist(iris$Sepal.Width),
   "sepal widths"
 )
@@ -206,7 +206,7 @@ start <- promptYearMonth(message = "Select start month")
 ## Version history
 
 ### Ver 1.7
-Add plotPng function
+Add viewPlot function
 
 ### Ver 1.6
 - Add variable name for View if no title was supplied.
