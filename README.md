@@ -206,7 +206,7 @@ start <- promptYearMonth(message = "Select start month")
 ## Version history
 
 ### Ver 1.7
-Add viewPlot function
+- Add viewPlot function
 
 ### Ver 1.6
 - Add variable name for View if no title was supplied.
