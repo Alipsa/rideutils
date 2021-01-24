@@ -7,7 +7,7 @@ Add the following to your pom.xml to use it:
 <dependency>
     <groupId>se.alipsa</groupId>
     <artifactId>rideutils</artifactId>
-    <version>1.6</version>
+    <version>1.7</version>
 </dependency>
 ```
 
