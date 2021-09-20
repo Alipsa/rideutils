@@ -9,9 +9,18 @@ View <- function(x, title = NA) {
 
 display <- function(x, title = NA) {
     if (is.na(title)) {
-        title <- deparse(substitute(x))
+        if (is.character(x)) {
+            title <- basename(x)
+        } else {
+            title <- deparse(substitute(x))
+        }
     }
-    inout$display(x, title)
+    possibleFile <- paste0(getwd(), "/", x)
+    if (file.exists(possibleFile)) {
+        inout$display(possibleFile, title)
+    } else {
+        inout$display(x, title)
+    }
 }
 
 viewPlot <- function(func, title = "") {
