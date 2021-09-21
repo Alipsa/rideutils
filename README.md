@@ -205,6 +205,10 @@ start <- promptYearMonth(message = "Select start month")
 
 ## Version history
 
+### Ver 1.8
+- add a help() function overriding the standard help which does not do anything useful
+- add an extra check to display() when just a filename without path is passed as parameter
+
 ### Ver 1.7
 - Add viewPlot function
 

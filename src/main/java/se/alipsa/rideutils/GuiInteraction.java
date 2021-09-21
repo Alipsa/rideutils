@@ -37,6 +37,11 @@ public interface GuiInteraction {
    */
   void viewer(SEXP sexp, String... title);
 
+  /**
+   * display html in the Help tab
+   */
+  void viewHelp(SEXP sexp, String... title);
+
   /** Return the current active script file or null if is has not been saved yet */
   String scriptFile();
 

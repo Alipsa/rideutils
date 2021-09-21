@@ -12,6 +12,7 @@ export(viewPlot)
 export(browseURL)
 export(viewHtml)
 export(viewer)
+export(help)
 
 export(readline)
 export(prompt)
