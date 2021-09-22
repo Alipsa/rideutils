@@ -41,7 +41,7 @@ viewer <- function(url, title="") {
     inout$viewer(url, title)
 }
 
-help <- function(topic, version = NA,  ...) {
+help <- function(topic, package = NULL, version = NULL,  ...) {
     if (!is.character(topic)) {
         topic <- deparse(substitute(topic))
     }
@@ -49,6 +49,27 @@ help <- function(topic, version = NA,  ...) {
     additionalArgs <- list(...)
     if (length(additionalArgs) > 0) {
         warning("Ignoring all other additional arguments besides topic and version")
+    }
+
+    defaultVerson <- "3.5.3"
+
+    createUrl <- function(packageName, pkgVersion, funName) {
+        paste0("https://www.rdocumentation.org/packages/", packageName, "/versions/", pkgVersion, "/topics/", funName)
+    }
+
+    createSearchUrl <- function(topic) {
+        #paste0("https://www.rdocumentation.org/search?q=", topic) # Does not diplay in a javafx webview
+        paste0("https://search.r-project.org/?P=", topic)
+    }
+
+    if (!is.null(package)) {
+        url <- createUrl(package, ifelse(is.null(version), defaultVerson, version), topic)
+        if (!UrlUtil$exists(url, 10L)) {
+            message(paste0("'", topic, "' in package '", package, "' with url '", url, "' is not valid" ))
+            url <- createSearchUrl(topic)
+        }
+        inout$viewHelp(url, topic)
+        return()
     }
 
     funcList <- NULL
@@ -64,27 +85,25 @@ help <- function(topic, version = NA,  ...) {
     pos <- which(funcList == topic)
     if(length(pos) == 0) {
         warning(paste("Cannot find help for", topic))
+        inout$viewHelp(createSearchUrl(topic), topic)
     } else {
         # if it is not a "standard R package" (e.g. base, stats, graphics etc) then the version will likely be something else
         standardPackages <- c("stats", "stats4", "graphics", "grDevices", "utils", "datasets", "methods", "base")
         for (idx in pos) {
             packageName <- names(funcList)[idx]
             funName <- funcList[idx]
-            if (is.na(version)) {
-                pkgVersion <- "3.5.3"
-            } else {
-                pkgVersion <- version
-            }
-            if (!packageName %in% standardPackages && is.na(version)) {
+            pkgVersion <- ifelse(is.null(version), defaultVerson, version)
+
+            if (!packageName %in% standardPackages && is.null(version)) {
                 pkgVersion <- packageVersion(packageName)
                 message(paste0("Guessing that '", topic, "' in package '", packageName, "', is version ", pkgVersion))
             }
-            url <- paste0("https://www.rdocumentation.org/packages/", packageName, "/versions/", pkgVersion, "/topics/", funName)
-            if (UrlUtil$exists(url, 10L)) {
-                inout$viewHelp(url, topic)
-            } else {
+            url <- createUrl(packageName, pkgVersion, funName)
+            if (!UrlUtil$exists(url, 10L)) {
                 message(paste0("'", topic, "' in package '", packageName, "' with url '", url, "' is not valid" ))
+                url <- createSearchUrl(topic)
             }
+            inout$viewHelp(url, paste(packageName, ":", topic))
         }
     }
 }
