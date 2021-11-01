@@ -1,6 +1,5 @@
 package se.alipsa.rideutils;
 
-import de.codecentric.centerdevice.javafxsvg.SvgImageLoaderFactory;
 import javafx.scene.image.Image;
 
 import java.io.File;
@@ -11,16 +10,10 @@ import java.util.List;
 
 public class ReadImage {
 
-    static {
-        SvgImageLoaderFactory.install();
-    }
-
-
     public static Image read(String name) {
         URL url = getResourceUrl(name);
         System.out.println("Reading image from " + url);
         return new Image(url.toExternalForm());
-        //return url.toExternalForm();
     }
 
 
