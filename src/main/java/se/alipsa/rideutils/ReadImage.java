@@ -10,12 +10,12 @@ import java.util.List;
 
 public class ReadImage {
 
+    /* Note that SVG images are not supported OOTB in javafx */
     public static Image read(String name) {
         URL url = getResourceUrl(name);
         System.out.println("Reading image from " + url);
         return new Image(url.toExternalForm());
     }
-
 
     /**
      * Find a resource using available class loaders.
@@ -26,7 +26,7 @@ public class ReadImage {
      * @return the URL representation of the resource
      */
     public static URL getResourceUrl(String resource) {
-        final List<ClassLoader> classLoaders = new ArrayList<ClassLoader>();
+        final List<ClassLoader> classLoaders = new ArrayList<>();
         classLoaders.add(Thread.currentThread().getContextClassLoader());
         classLoaders.add(ReadImage.class.getClassLoader());
 
