@@ -1,8 +1,11 @@
 importClass(javafx.scene.image.Image)
 importClass(javafx.scene.image.ImageView)
 importClass(se.alipsa.rideutils.UrlUtil)
+importClass(se.alipsa.rideutils.ReadImage)
+importClass(se.alipsa.rideutils.Dialogs)
 
 export(readImage)
+export(contentType)
 export(as.imageView)
 export(greaterThan)
 export(lessThan)

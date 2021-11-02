@@ -10,7 +10,7 @@ readline <- function(prompt = "") {
 
 # A text input dialog
 prompt <- function(title = "", headerText = "", message = "", defaultValue = "") {
-  import(se.alipsa.rideutils.Dialogs)
+  #import(se.alipsa.rideutils.Dialogs)
   dialogs <- Dialogs$new(inout$getStage())
   if (is.na(defaultValue) || is.null(defaultValue)) {
     defaultValue <- ""
@@ -21,14 +21,14 @@ prompt <- function(title = "", headerText = "", message = "", defaultValue = "")
 # todo maybe add a default to prompt date as well?
 #promptDate <- function(title = "", message = "", outputFormat = "yyyy-MM-dd", defaultValue = as.character(Sys.Date())) {
 promptDate <- function(title = "", message = "", outputFormat = "yyyy-MM-dd") {
-  import(se.alipsa.rideutils.Dialogs)
+  #import(se.alipsa.rideutils.Dialogs)
   dialogs <- Dialogs$new(inout$getStage())
   dialogs$promptDate(title, message, outputFormat)
 }
 
 # languageTag is one of language tags in the table: https://www.oracle.com/java/technologies/javase/jdk8-jre8-suported-locales.html
 promptYearMonth <- function(title = "",  message = "", from=NA, to=NA, initial=NA, languageTag=NA, monthFormat = "MMMM", outputFormat = "yyyy-MM") {
-  import(se.alipsa.rideutils.Dialogs)
+  #import(se.alipsa.rideutils.Dialogs)
   dialogs <- Dialogs$new(inout$getStage())
 
   if (is.na(initial)) {
@@ -52,7 +52,7 @@ promptYearMonth <- function(title = "",  message = "", from=NA, to=NA, initial=N
 
 # A file chooser dialog
 chooseFile <- function (title, initialDir = ".", description, ...) {
-  import(se.alipsa.rideutils.Dialogs)
+  #import(se.alipsa.rideutils.Dialogs)
   dialogs <- Dialogs$new(inout$getStage())
   file <- dialogs$chooseFile(title,  initialDir, description, ...)
   if (is.null(file)) {
@@ -64,7 +64,7 @@ chooseFile <- function (title, initialDir = ".", description, ...) {
 
 # A dir chooser dialog
 chooseDir <- function (title, initialDir = ".") {
-  import(se.alipsa.rideutils.Dialogs)
+  #import(se.alipsa.rideutils.Dialogs)
   dialogs <- Dialogs$new(inout$getStage())
   dir <- dialogs$chooseDir(title,  initialDir)
   if (is.null(dir)) {

@@ -1,19 +1,37 @@
 package se.alipsa.rideutils;
 
 import javafx.scene.image.Image;
+import org.apache.tika.Tika;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReadImage {
 
     /* Note that SVG images are not supported OOTB in javafx */
-    public static Image read(String name) {
+    public static Image read(String name) throws IOException {
         URL url = getResourceUrl(name);
         System.out.println("Reading image from " + url);
+
+        try {
+            if (url == null || !Paths.get(url.toURI()).toFile().exists()) {
+                throw new FileNotFoundException("readImage: Failed to find file " + name);
+            }
+        } catch (URISyntaxException e) {
+            // We get the url from the classloader so this should never happen.
+            throw new IOException("readImage: Unexpected problem converting the file path to an URI", e);
+        }
+        String contentType = getContentType(name);
+        if ("image/svg+xml".equals(contentType)) {
+            throw new IOException("readImage: SVG files cannot be converted to images");
+        }
         return new Image(url.toExternalForm());
     }
 
@@ -54,5 +72,14 @@ public class ReadImage {
             return classLoader.getResource(resource);
         }
         return null;
+    }
+
+    private static String getContentType(String fileName) throws IOException {
+        File file = new File(fileName);
+        if (!file.exists()) {
+            throw new FileNotFoundException("contentType: " + fileName + " does not exist!");
+        }
+        Tika tika = new Tika();
+        return tika.detect(file);
     }
 }

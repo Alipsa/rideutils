@@ -5,16 +5,15 @@
 
 
 readImage <- function(url) {
-    import(se.alipsa.rideutils.ReadImage)
-    import(javafx.scene.image.Image)
-    #sapply(url, function(name) ReadImage$read(name = name), USE.NAMES = FALSE)
+    #import(se.alipsa.rideutils.ReadImage)
+    #import(javafx.scene.image.Image)
     img <- ReadImage$read(url)
     return(img)
 }
 
 
 as.imageView <- function(x) {
-    import(javafx.scene.image.ImageView)
+    #import(javafx.scene.image.ImageView)
     view <- ImageView$new(x)
     return(view)
 }
