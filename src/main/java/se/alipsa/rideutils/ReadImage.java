@@ -2,6 +2,9 @@ package se.alipsa.rideutils;
 
 import javafx.scene.image.Image;
 import org.apache.tika.Tika;
+import org.girod.javafx.svgimage.SVGImage;
+import org.girod.javafx.svgimage.SVGLoader;
+import org.girod.javafx.svgimage.xml.SVGParsingException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,7 +33,12 @@ public class ReadImage {
         }
         String contentType = getContentType(name);
         if ("image/svg+xml".equals(contentType)) {
-            throw new IOException("readImage: SVG files cannot be converted to images");
+            try {
+                SVGImage result = SVGLoader.load(url);
+                return result.toImage();
+            } catch (SVGParsingException e) {
+                throw new IOException("readImage: Failed to read svg image", e);
+            }
         }
         return new Image(url.toExternalForm());
     }
@@ -76,6 +84,16 @@ public class ReadImage {
 
     private static String getContentType(String fileName) throws IOException {
         File file = new File(fileName);
+        if (!file.exists()) {
+            URL url = getResourceUrl(fileName);
+            if (url != null) {
+                try {
+                    file = Paths.get(url.toURI()).toFile();
+                } catch (URISyntaxException e) {
+                    // Ignore, the URI comes from the classloader so cannot have a syntax issue
+                }
+            }
+        }
         if (!file.exists()) {
             throw new FileNotFoundException("contentType: " + fileName + " does not exist!");
         }
