@@ -20,6 +20,7 @@ export(help)
 
 export(readline)
 export(prompt)
+export(promptSelect)
 export(promptDate)
 export(promptYearMonth)
 export(chooseFile)

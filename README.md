@@ -7,7 +7,7 @@ Add the following to your pom.xml to use it:
 <dependency>
     <groupId>se.alipsa</groupId>
     <artifactId>rideutils</artifactId>
-    <version>1.7</version>
+    <version>1.8</version>
 </dependency>
 ```
 
@@ -26,7 +26,7 @@ Here is a screenshot:
 ![Screenshot](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/demogui.png "Screenshot")
 
 It is a simple R gui where some sample files are loaded in the left pane. 
-You can select one and it will load the code into the right pane which holds
+You can select one, and it will load the code into the right pane which holds
 the R code to execute. The resulting output will be in the bottom pane.
 
 ## Function descriptions
@@ -123,12 +123,6 @@ library("se.alipsa:rideutils")
 var <- readline("enter a number")
 print(paste("var is", var))
 ```
-![Prompt](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/prompt.png "Prompt")
-
-__prompt <- function(title = "", headerText = "", message = "")__
-Allows a user to enter string input which we can use in subsequent code.
-
-_Return value:_ It returns a string (character vector) with user input or NA if cancel was pressed.
 
 __chooseFile <- function (title, initialDir = ".", description, ...)__
 Allows a user to pick a file.
@@ -158,6 +152,13 @@ print(paste("Dir chosen is", dir))
 ```
 ![chooseDir](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/chooseDir.png "chooseDir")
 
+__prompt <- function(title = "", headerText = "", message = "")__
+Allows a user to enter string input which we can use in subsequent code.
+
+_Return value:_ It returns a string (character vector) with user input or NA if cancel was pressed.
+
+![Prompt](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/prompt.png "Prompt")
+
 __promptDate <- function(title = "", message = "", outputFormat = "yyyy-MM-dd")__
 Pops up a date picker dialog allowing the user to pick a date.
 
@@ -173,6 +174,7 @@ library("se.alipsa:rideutils")
 date2 <- promptDate("Date", message = "Another date", outputFormat = "dd MMM yyyy")
 print(paste("Date is", date2))
 ```
+![PromptDate](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/promptDate.png "PromptDate")
 
 __promptYearMonth <- function(title = "",  message = "", from=NA, to=NA, initial=NA, languageTag=NA, monthFormat = "MMMM", outputFormat = "yyyy-MM")__
 
@@ -203,11 +205,37 @@ start <- promptYearMonth(message = "Select start month")
 ```
 ![promptYearMonth](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/promptYearMonth.png "promptYearMonth")
 
+Pick or type a Year Month.
+
+__promptSelect <- function(title = "", message = "", options, defaultValue = "")__
+Pick one of the specified options
+_Example:_
+```r
+library("se.alipsa:rideutils")
+
+fruit <- promptSelect(
+        title = "todays fruit",
+        message = "pick the fruit of today",
+        options = c("Apple", "Banana", "Orange"),
+        defaultValue = "Banana"
+)
+print(paste0("The fruit of today is ", fruit, ", type is ", typeof(fruit) ))
+```
+which will print
+```
+[1] "The fruit of today is Orange, type is character"
+```
+![promptSelect](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/promptSelect.png "promptSelect")
+
 ## Version history
 
 ### Ver 1.8
-- add a help() function overriding the standard help which does not do anything useful
-- add an extra check to display() when just a filename without path is passed as parameter
+- Add a help() function overriding the standard help which does not do anything useful
+- Add an extra check to display() when just a filename without path is passed as parameter
+- Add default value to promptDate
+- Add promptSelect interactive function
+- Change readImage to handle svg files using fxsvgimage instead of javafxsvg as the latter depends on batik
+which has problems reading many svg files.
 
 ### Ver 1.7
 - Add viewPlot function

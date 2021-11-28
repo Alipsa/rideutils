@@ -1,10 +1,12 @@
 library("se.alipsa:rideutils")
 
 # simple version with all defaults
-start <- promptYearMonth(message = "Select start month")
+start <- promptYearMonth(title="yearMonth with defaults", message = "Select start month")
+print(paste("start year month is", start))
 
 # change output format and languageTag etc.
 end <- promptYearMonth(
+  title="yearMonth with range",
   message = "Select end month",
   from = "2019-10",
   to = "2022-02",
@@ -13,4 +15,4 @@ end <- promptYearMonth(
   monthFormat = "MMM",
   outputFormat = "MMM/yyyy"
 )
-print(paste0("start year month is ", start, ", end year month is ", end))
+print(paste("end year month is", end))
