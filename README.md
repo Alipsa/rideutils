@@ -178,6 +178,8 @@ print(paste("Date is", date2))
 
 __promptYearMonth <- function(title = "",  message = "", from=NA, to=NA, initial=NA, languageTag=NA, monthFormat = "MMMM", outputFormat = "yyyy-MM")__
 
+Pick or type a Year Month.
+
 _@param:_ from - a character string with the start year month than can be chosen in the format "yyyy-MM".
 Default value NA will be converted to the initial date minus 3 years
 
@@ -205,7 +207,6 @@ start <- promptYearMonth(message = "Select start month")
 ```
 ![promptYearMonth](https://raw.githubusercontent.com/perNyfelt/rideutils/master/doc/promptYearMonth.png "promptYearMonth")
 
-Pick or type a Year Month.
 
 __promptSelect <- function(title = "", message = "", options, defaultValue = "")__
 Pick one of the specified options
