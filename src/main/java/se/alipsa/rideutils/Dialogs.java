@@ -58,11 +58,6 @@ public class Dialogs {
             }
             items.add(options.getElementAsObject(i));
         }
-        if (defaultIndex == 0) {
-            System.out.println("Failed to find a match for defaultValue: " + defaultValue + " of type " + defaultValue.getClass());
-            System.out.println("Items are");
-            items.forEach(i -> System.out.println(i + " of type " + i.getClass()));
-        }
 
         final int index = defaultIndex;
         FutureTask<Object> task = new FutureTask<>(() -> {

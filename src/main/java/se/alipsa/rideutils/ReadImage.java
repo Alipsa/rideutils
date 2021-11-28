@@ -21,8 +21,7 @@ public class ReadImage {
     /* Note that SVG images are not supported OOTB in javafx */
     public static Image read(String name) throws IOException {
         URL url = getResourceUrl(name);
-        System.out.println("Reading image from " + url);
-
+        //System.out.println("Reading image from " + url);
         try {
             if (url == null || !Paths.get(url.toURI()).toFile().exists()) {
                 throw new FileNotFoundException("readImage: Failed to find file " + name);
