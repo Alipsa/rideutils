@@ -7,7 +7,7 @@
 
   <groupId>se.alipsa</groupId>
   <artifactId>rideutils</artifactId>
-  <version>1.8-SNAPSHOT</version>
+  <version>1.8</version>
   <packaging>jar</packaging>
 
 
