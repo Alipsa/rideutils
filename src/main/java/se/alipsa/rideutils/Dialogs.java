@@ -56,7 +56,7 @@ public class Dialogs {
             if (obj.equals(defaultValue)) {
                 defaultIndex = i;
             }
-            items.add(options.getElementAsObject(i));
+            items.add(obj);
         }
 
         final int index = defaultIndex;
