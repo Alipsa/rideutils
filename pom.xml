@@ -80,7 +80,7 @@
     <dependency>
       <groupId>com.github.hervegirod</groupId>
       <artifactId>fxsvgimage</artifactId>
-      <version>0.6</version>
+      <version>0.6.1</version>
     </dependency>
 
     <!-- the hamcrest package is only required if you use it for unit tests -->

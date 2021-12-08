@@ -230,6 +230,9 @@ which will print
 
 ## Version history
 
+### Ver 1.8.1
+- Bump fxsvgimage version
+
 ### Ver 1.8
 - Add a help() function overriding the standard help which does not do anything useful
 - Add an extra check to display() when just a filename without path is passed as parameter
