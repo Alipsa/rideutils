@@ -230,6 +230,8 @@ which will print
 
 ## Version history
 
+### Ver 1.8.2
+
 ### Ver 1.8.1
 - Bump fxsvgimage version
 
