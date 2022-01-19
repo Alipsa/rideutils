@@ -230,14 +230,16 @@ which will print
 
 ## Version history
 
-### Ver 1.8.2
+### Ver 1.8.3
+
+### Ver 1.8.2 (2022-Jan-19)
 - Add support for View of a table directly by auto converting it to a data.frame
 - upgrade tika version
 
-### Ver 1.8.1
+### Ver 1.8.1 (2021-Dec-14)
 - Bump fxsvgimage version
 
-### Ver 1.8
+### Ver 1.8 (2021-Nov-28)
 - Add a help() function overriding the standard help which does not do anything useful
 - Add an extra check to display() when just a filename without path is passed as parameter
 - Add default value to promptDate
@@ -245,37 +247,37 @@ which will print
 - Change readImage to handle svg files using fxsvgimage instead of javafxsvg as the latter depends on batik
 which has problems reading many svg files.
 
-### Ver 1.7
+### Ver 1.7 (2021-Jan-24)
 - Add viewPlot function
 
-### Ver 1.6
+### Ver 1.6 (2020-Sep-13)
 - Add variable name for View if no title was supplied.
 
-### Ver 1.5
+### Ver 1.5 (2020-Jul-30)
 - Override `readline` from base R to work in a GUI context
 - Greatly expand documentation
 - Moved demo to separate module
 - Create demo jar with dependencies and fixed file traversal so it also works inside a jar.
 
-### Ver 1.4
+### Ver 1.4 (2020-Jul-29)
 - Add additional parameters to promptDate and promptYearMonth.
 - Changed demo to stream output to not give the wrong impression on input availability.
 
-### Ver 1.3
+### Ver 1.3 (2020-Jul-24)
 - Add gui dialog interactions: 
     - prompt which prompts for a text input
     - chooseFile which opens a file chooser
     - chooseDir which opens a directory chooser
 
-### Ver 1.2
+### Ver 1.2 (2020-May-27)
 - Format before View so that dates looks understandable
 
-### Ver 1.1
-- Add display so you dont have to write inout$display()
+### Ver 1.1 (2020-May-12)
+- Add display so you don't have to write inout$display()
 
 ### Ver 1.0
 - Hamcrest extension greaterThan and lessThan
-- Export View so you dont have to write inout$View()
+- Export View so you don't have to write inout$View()
 - Lower level image functions bridging to java: readImage, as.imageView
  
 ## 3:rd party software used
