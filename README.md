@@ -7,7 +7,7 @@ Add the following to your pom.xml to use it:
 <dependency>
     <groupId>se.alipsa</groupId>
     <artifactId>rideutils</artifactId>
-    <version>1.8.1</version>
+    <version>1.8.2</version>
 </dependency>
 ```
 
@@ -231,6 +231,8 @@ which will print
 ## Version history
 
 ### Ver 1.8.2
+- Add support for View of a table directly by auto converting it to a data.frame
+- upgrade tika version
 
 ### Ver 1.8.1
 - Bump fxsvgimage version

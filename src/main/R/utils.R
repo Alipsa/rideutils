@@ -4,7 +4,11 @@ View <- function(x, title = NA) {
     if (is.na(title)) {
         title <- deparse(substitute(x))
     }
-    inout$View(format(x), title)
+    if (class(x) == "table") {
+        inout$View(as.data.frame(x))
+    } else {
+        inout$View(format(x), title)
+    }
 }
 
 display <- function(x, title = NA) {
