@@ -1,16 +1,25 @@
 package se.alipsa.rideutils;
 
+import javafx.application.Platform;
 import javafx.scene.image.Image;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import se.alipsa.JfxTestRunner;
+import javafx.stage.Stage;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;;
+import org.testfx.api.FxRobot;
+import org.testfx.framework.junit5.ApplicationExtension;
+import org.testfx.framework.junit5.Start;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@RunWith( JfxTestRunner.class )
-public class ReadImageTest {
+@ExtendWith(ApplicationExtension.class)
+public class ReadImageTest  {
+
+  @Start
+  public void start(Stage stage) {
+    stage.show();
+  }
 
   @Test
   public void testReadSvg() throws IOException {
