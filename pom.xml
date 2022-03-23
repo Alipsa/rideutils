@@ -36,7 +36,7 @@
   </scm>
 
   <properties>
-    <renjin.version>RELEASE</renjin.version>
+    <renjin.version>3.5-beta76</renjin.version>
     <renjin.version.for.plugin>3.5-beta76</renjin.version.for.plugin>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
