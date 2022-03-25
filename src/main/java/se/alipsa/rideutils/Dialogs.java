@@ -7,7 +7,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import org.renjin.sexp.ListVector;
 import org.renjin.sexp.Vector;
 import se.alipsa.ymp.YearMonthPicker;
 

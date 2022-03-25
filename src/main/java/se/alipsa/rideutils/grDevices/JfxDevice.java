@@ -1,4 +1,4 @@
-package org.renjin.grDevices;
+package se.alipsa.rideutils.grDevices;
 
 import org.renjin.grDevices.GraphicsDevice;
 
