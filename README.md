@@ -7,9 +7,10 @@ Add the following to your pom.xml to use it:
 <dependency>
     <groupId>se.alipsa</groupId>
     <artifactId>rideutils</artifactId>
-    <version>1.8.2</version>
+    <version>1.8.3</version>
 </dependency>
 ```
+Note than from version 1.8.3, Java 11 is required. Previous versions required Java 8.
 
 ## API / Usage overview
 
