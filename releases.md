@@ -1,11 +1,12 @@
 ## Version history
 
-### Ver 1.8.4
+### Ver 1.8.4 (2022-Mar-25), Java 11
+change module name to `se.alipsa.rideutils`
 
 ### Ver 1.8.3 (2022-Mar-25), Java 11
 Moved version history to its own file.
 Move grDevice implementation (WIP) to the rideutils package
-Upgrade to java 11, add module-info `se.alipsa.rideutils`
+Upgrade to java 11, add module-info `rideutils`
 
 ### Ver 1.8.2 (2022-Jan-19), Java 8
 - Add support for View of a table directly by auto converting it to a data.frame

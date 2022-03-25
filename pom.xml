@@ -7,7 +7,7 @@
 
   <groupId>se.alipsa</groupId>
   <artifactId>rideutils</artifactId>
-  <version>1.8.4-SNAPSHOT</version>
+  <version>1.8.4</version>
   <packaging>jar</packaging>
 
 
@@ -329,7 +329,7 @@
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>nexus-staging-maven-plugin</artifactId>
-            <version>1.6.8</version>
+            <version>1.6.12</version>
             <extensions>true</extensions>
             <configuration>
               <serverId>ossrh</serverId>

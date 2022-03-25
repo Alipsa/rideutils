@@ -1,4 +1,4 @@
-module rideutils {
+module se.alipsa.rideutils {
   requires java.desktop;
   requires javafx.controls;
   requires javafx.swing;
