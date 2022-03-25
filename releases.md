@@ -1,5 +1,7 @@
 ## Version history
 
+### Ver 1.8.4
+
 ### Ver 1.8.3 (2022-Mar-25), Java 11
 Moved version history to its own file.
 Move grDevice implementation (WIP) to the rideutils package
