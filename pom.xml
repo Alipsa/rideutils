@@ -92,7 +92,7 @@
     <dependency>
       <groupId>com.github.hervegirod</groupId>
       <artifactId>fxsvgimage</artifactId>
-      <version>0.6.1</version>
+      <version>1.0b2</version>
     </dependency>
 
     <!-- the hamcrest package is only required if you use it for unit tests -->

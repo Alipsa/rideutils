@@ -8,5 +8,6 @@ module se.alipsa.rideutils {
   requires renjin.script.engine;
   requires org.apache.tika.core;
   requires fxsvgimage;
+  //requires org.girod.javafx.svgimage;
   exports se.alipsa.rideutils;
 }
