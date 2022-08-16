@@ -1,6 +1,7 @@
 ## Version history
 
 ### Ver 1.8.5
+- upgrade dependencies: javafx -> 18.02, tika -> 2.4.1
 
 ### Ver 1.8.4 (2022-Mar-25), Java 11
 change module name to `se.alipsa.rideutils`
